@@ -9,11 +9,11 @@ To use this template, your computer needs:
 - [NodeJS](https://nodejs.org/en/) (0.12 or greater)
 - [Git](https://git-scm.com/)
 
-This template can be installed with the Foundation CLI, or downloaded and set up manually.
+This template can be installed with the Bootstrap CLI, or downloaded and set up manually.
 
 ### Using the CLI
 
-Install the Foundation CLI with this command:
+Install the Bootstrap CLI with this command:
 
 ```bash
 npm install bootstrap-cli --global
@@ -43,4 +43,5 @@ npm install
 bower install
 ```
 
-Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+Finally, run `npm start` to run the Sass and HTML template compiler. They will re-run every time you save a Sass or HTML temaplate file.
+
