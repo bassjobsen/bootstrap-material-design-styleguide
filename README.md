@@ -1,4 +1,4 @@
-# Bootstrap 4 Style guide
+# Material Design for Bootstrap Style guide
 
 This is a basic starter style guide for [Material Design for Bootstrap](http://fezvrasta.github.io/bootstrap-material-design/) and [Bootstrap 4](http://v4-alpha.getbootstrap.com/). It includes a Sass compiler and a set of nunjucks HTML templates for you. [nunjucks](https://github.com/mozilla/nunjucks) is a powerful templating engine for JavaScript with inheritance, asynchronous control, and more (jinja2 inspired).
 
