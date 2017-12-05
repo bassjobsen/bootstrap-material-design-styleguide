@@ -11,15 +11,23 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
+  var tilde_importer = require('grunt-sass-tilde-importer');  
 
   var config = {
-    bower: { path: 'bower_components/'}
+    node: { path: 'node_modules/'}
   }
   
   var mq4HoverShim = require('mq4-hover-shim');
-  //var autoprefixerSettings = require(config.bower.path + 'bootstrap/grunt/autoprefixer-settings.js');
-  //var autoprefixer = require('autoprefixer')(autoprefixerSettings);
-  var autoprefixer = require('autoprefixer');
+  var autoprefixer = require('autoprefixer')([
+    "Chrome >= 45",
+    "Firefox ESR",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ]);
   // Project configuration.
   grunt.initConfig({
     
@@ -33,7 +41,9 @@ module.exports = function (grunt) {
     concat: {
       bootstrap: {
         src: [
-          '<%= config.bower.path %>bootstrap-material-design/dist/bootstrap-material-design.iife.js',
+          '<%= config.node.path %>jquery/dist/jquery.min.js',
+          '<%= config.node.path %>popper.js/dist/umd/popper.min.js',
+          '<%= config.node.path %>bootstrap-material-design/dist/js/bootstrap-material-design.min.js',
           'assets/js/fixedsticky.js'
         ],
         dest: '_site/js/app.js'
@@ -41,15 +51,16 @@ module.exports = function (grunt) {
     },
     sass: {
       options: {
-        includePaths: [config.bower.path ],
+        includePaths: [ config.node.path ],
         precision: 6,
         sourceComments: false,
         sourceMap: true,
-        outputStyle: 'expanded'
+        outputStyle: 'expanded',
+        importer: tilde_importer
       },
       dist: {
         files: {
-          '_site/css/app.css': 'scss/app.scss'
+          '_site/css/app.css': 'scss/app.scss'      
         }
       }
     },
@@ -92,7 +103,7 @@ module.exports = function (grunt) {
         ]
       },
       production: {
-      options: {data:{'env':'development'}},
+      options: {data:{'env':'production'}},
        files: [
            {
               expand: true,
